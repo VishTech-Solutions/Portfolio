@@ -1,0 +1,1677 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VishTech Solution — Automate Your Business</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --orange: #ff6b00;
+        --orange-light: #ff8c35;
+        --orange-glow: rgba(255, 107, 0, 0.25);
+        --black: #0a0a0a;
+        --dark: #111111;
+        --dark2: #1a1a1a;
+        --dark3: #222222;
+        --white: #f5f5f5;
+        --gray: #888888;
+        --card-bg: #161616;
+      }
+      [data-theme="light"] {
+        --black: #f0f0f0;
+        --dark: #e8e8e8;
+        --dark2: #dddddd;
+        --dark3: #cccccc;
+        --white: #111111;
+        --gray: #555555;
+        --card-bg: #ffffff;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "Rajdhani", sans-serif;
+        background: var(--black);
+        color: var(--white);
+        overflow-x: hidden;
+        cursor: none;
+      }
+
+      /* CUSTOM CURSOR */
+      .cursor {
+        position: fixed;
+        width: 12px;
+        height: 12px;
+        background: var(--orange);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9999;
+        transform: translate(-50%, -50%);
+        transition: transform 0.1s ease;
+      }
+      .cursor-follower {
+        position: fixed;
+        width: 36px;
+        height: 36px;
+        border: 1.5px solid var(--orange);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9998;
+        transform: translate(-50%, -50%);
+        transition: all 0.15s ease;
+        opacity: 0.5;
+      }
+
+      /* NAVBAR */
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        padding: 18px 0;
+        background: rgba(10, 10, 10, 0.85);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(255, 107, 0, 0.15);
+        transition: all 0.3s;
+      }
+      .nav-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 5%;
+      }
+      .nav-logo {
+        font-family: "Bebas Neue", cursive;
+        font-size: 1.8rem;
+        color: var(--orange);
+        letter-spacing: 2px;
+        text-decoration: none;
+      }
+      .nav-logo span {
+        color: var(--white);
+      }
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+      }
+      .nav-links a {
+        color: var(--gray);
+        text-decoration: none;
+        font-size: 0.95rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        transition: color 0.3s;
+        position: relative;
+      }
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--orange);
+        transition: width 0.3s;
+      }
+      .nav-links a:hover {
+        color: var(--orange);
+      }
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+      .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+      .theme-toggle {
+        background: var(--dark2);
+        border: 1px solid rgba(255, 107, 0, 0.3);
+        color: var(--orange);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .theme-toggle:hover {
+        background: var(--orange);
+        color: #fff;
+      }
+      .hamburger {
+        display: none;
+        background: none;
+        border: none;
+        color: var(--orange);
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+
+      /* FLOATING TECH ICONS */
+      .floating-icons {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        overflow: hidden;
+        z-index: 0;
+      }
+      .float-icon {
+        position: absolute;
+        font-size: 1.8rem;
+        color: var(--orange);
+        opacity: 0.07;
+        animation: floatUp linear infinite;
+      }
+      @keyframes floatUp {
+        0% {
+          transform: translateY(110%) rotate(0deg);
+          opacity: 0;
+        }
+        10% {
+          opacity: 0.07;
+        }
+        90% {
+          opacity: 0.07;
+        }
+        100% {
+          transform: translateY(-110%) rotate(360deg);
+          opacity: 0;
+        }
+      }
+
+      /* HERO */
+      #hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        position: relative;
+        background: var(--black);
+        padding-top: 80px;
+      }
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        align-items: center;
+        position: relative;
+        z-index: 1;
+        padding: 0 5%;
+        width: 100%;
+      }
+      .hero-tag {
+        display: inline-block;
+        background: var(--orange-glow);
+        border: 1px solid var(--orange);
+        color: var(--orange);
+        padding: 6px 16px;
+        border-radius: 2px;
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        margin-bottom: 1.5rem;
+        animation: fadeInDown 0.8s ease forwards;
+      }
+      .hero-name {
+        font-family: "Bebas Neue", cursive;
+        font-size: clamp(3.5rem, 8vw, 7rem);
+        line-height: 0.9;
+        letter-spacing: 3px;
+        animation: fadeInUp 0.8s ease 0.2s both;
+      }
+      .hero-name .orange {
+        color: var(--orange);
+      }
+      .hero-typed {
+        font-family: "Space Mono", monospace;
+        font-size: clamp(1rem, 2.5vw, 1.3rem);
+        color: var(--gray);
+        margin: 1.5rem 0;
+        animation: fadeInUp 0.8s ease 0.4s both;
+      }
+      .typed-cursor {
+        color: var(--orange);
+        animation: blink 1s infinite;
+      }
+      @keyframes blink {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0;
+        }
+      }
+      .hero-desc {
+        color: var(--gray);
+        font-size: 1.05rem;
+        line-height: 1.7;
+        max-width: 480px;
+        margin-bottom: 2rem;
+        animation: fadeInUp 0.8s ease 0.5s both;
+      }
+      .hero-btns {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        animation: fadeInUp 0.8s ease 0.6s both;
+      }
+      .btn-orange {
+        background: var(--orange);
+        color: #fff;
+        padding: 14px 32px;
+        border: none;
+        border-radius: 2px;
+        font-family: "Rajdhani", sans-serif;
+        font-weight: 700;
+        font-size: 1rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        text-decoration: none;
+        transition: all 0.3s;
+        position: relative;
+        overflow: hidden;
+      }
+      .btn-orange::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.15);
+        transition: left 0.3s;
+      }
+      .btn-orange:hover::before {
+        left: 100%;
+      }
+      .btn-orange:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px var(--orange-glow);
+        color: #fff;
+      }
+      .btn-outline {
+        background: transparent;
+        color: var(--orange);
+        padding: 13px 32px;
+        border: 1.5px solid var(--orange);
+        border-radius: 2px;
+        font-family: "Rajdhani", sans-serif;
+        font-weight: 700;
+        font-size: 1rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        text-decoration: none;
+        transition: all 0.3s;
+      }
+      .btn-outline:hover {
+        background: var(--orange);
+        color: #fff;
+        transform: translateY(-2px);
+      }
+
+      /* HERO VISUAL SIDE */
+      .hero-visual {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: fadeInRight 1s ease 0.3s both;
+      }
+      .hero-box {
+        width: 100%;
+        max-width: 420px;
+        aspect-ratio: 1;
+        background: var(--dark2);
+        border: 1px solid rgba(255, 107, 0, 0.2);
+        border-radius: 4px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero-box::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: conic-gradient(
+          from 0deg,
+          transparent,
+          var(--orange-glow),
+          transparent 30%
+        );
+        animation: spin 4s linear infinite;
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      .hero-box-inner {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        background: var(--dark2);
+        width: calc(100% - 2px);
+        height: calc(100% - 2px);
+        border-radius: 3px;
+        justify-content: center;
+        padding: 2rem;
+      }
+      .hero-icon-big {
+        font-size: 5rem;
+        color: var(--orange);
+        filter: drop-shadow(0 0 20px var(--orange-glow));
+        animation: pulse 2s ease-in-out infinite;
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+      }
+      .hero-stats {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        width: 100%;
+        margin-top: 1rem;
+      }
+      .stat-box {
+        background: var(--dark3);
+        border: 1px solid rgba(255, 107, 0, 0.15);
+        border-radius: 3px;
+        padding: 1rem;
+        text-align: center;
+      }
+      .stat-num {
+        font-family: "Bebas Neue", cursive;
+        font-size: 2rem;
+        color: var(--orange);
+        display: block;
+        line-height: 1;
+      }
+      .stat-label {
+        font-size: 0.75rem;
+        color: var(--gray);
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        font-weight: 600;
+      }
+
+      /* SECTION COMMON */
+      section {
+        padding: 100px 5%;
+      }
+      .section-label {
+        font-family: "Space Mono", monospace;
+        font-size: 0.75rem;
+        color: var(--orange);
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        margin-bottom: 0.5rem;
+        display: block;
+      }
+      .section-title {
+        font-family: "Bebas Neue", cursive;
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        letter-spacing: 2px;
+        line-height: 1;
+        margin-bottom: 3rem;
+      }
+      .section-title .orange {
+        color: var(--orange);
+      }
+      .section-line {
+        width: 60px;
+        height: 3px;
+        background: var(--orange);
+        margin: 1rem 0 3rem;
+      }
+
+      /* ABOUT */
+      #about {
+        background: var(--dark);
+      }
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1.5fr;
+        gap: 4rem;
+        align-items: center;
+      }
+      .about-img-wrap {
+        position: relative;
+      }
+      .about-img-box {
+        width: 100%;
+        aspect-ratio: 0.85;
+        background: var(--dark2);
+        border: 1px solid rgba(255, 107, 0, 0.2);
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 8rem;
+        color: var(--orange);
+        position: relative;
+        overflow: hidden;
+      }
+      .about-img-box::after {
+        content: "V";
+        font-family: "Bebas Neue", cursive;
+        font-size: 12rem;
+        color: rgba(255, 107, 0, 0.05);
+        position: absolute;
+        right: -20px;
+        bottom: -20px;
+      }
+      .about-tag {
+        position: absolute;
+        bottom: -15px;
+        right: -15px;
+        background: var(--orange);
+        color: #fff;
+        padding: 12px 20px;
+        border-radius: 2px;
+        font-family: "Space Mono", monospace;
+        font-size: 0.8rem;
+        font-weight: 700;
+      }
+      .about-text {
+        color: var(--gray);
+        font-size: 1.05rem;
+        line-height: 1.8;
+        margin-bottom: 1.5rem;
+      }
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.75rem;
+        margin-top: 2rem;
+      }
+      .skill-chip {
+        background: var(--dark2);
+        border: 1px solid rgba(255, 107, 0, 0.2);
+        border-radius: 2px;
+        padding: 8px 12px;
+        font-size: 0.82rem;
+        font-weight: 600;
+        color: var(--gray);
+        text-align: center;
+        letter-spacing: 0.5px;
+        transition: all 0.3s;
+      }
+      .skill-chip:hover {
+        border-color: var(--orange);
+        color: var(--orange);
+      }
+
+      /* PROJECTS */
+      #projects {
+        background: var(--black);
+      }
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 2rem;
+      }
+      .project-card {
+        background: var(--card-bg);
+        border: 1px solid rgba(255, 107, 0, 0.12);
+        border-radius: 4px;
+        overflow: hidden;
+        transition: all 0.4s ease;
+        cursor: pointer;
+        position: relative;
+      }
+      .project-card:hover {
+        border-color: var(--orange);
+        transform: translateY(-6px);
+        box-shadow: 0 20px 50px rgba(255, 107, 0, 0.15);
+      }
+      .card-slider {
+        position: relative;
+        height: 220px;
+        overflow: hidden;
+        background: var(--dark2);
+      }
+      .slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.6s ease;
+      }
+      .slide.active {
+        opacity: 1;
+      }
+      .slide-placeholder {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        background: linear-gradient(135deg, var(--dark2) 0%, var(--dark3) 100%);
+      }
+      .slide-placeholder i {
+        font-size: 3rem;
+        color: var(--orange);
+        opacity: 0.6;
+      }
+      .slide-placeholder span {
+        font-size: 0.8rem;
+        color: var(--gray);
+        letter-spacing: 2px;
+        font-family: "Space Mono", monospace;
+      }
+      .slide-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .slider-dots {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 6px;
+        z-index: 2;
+      }
+      .dot {
+        width: 6px;
+        height: 6px;
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        transition: all 0.3s;
+        cursor: pointer;
+      }
+      .dot.active {
+        background: var(--orange);
+        width: 18px;
+        border-radius: 3px;
+      }
+      .card-status {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        background: #22c55e;
+        color: #fff;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        padding: 4px 10px;
+        border-radius: 2px;
+        font-family: "Space Mono", monospace;
+        z-index: 2;
+      }
+      .card-body-custom {
+        padding: 1.5rem;
+      }
+      .card-client {
+        font-size: 0.75rem;
+        color: var(--orange);
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-family: "Space Mono", monospace;
+        margin-bottom: 0.4rem;
+      }
+      .card-title-proj {
+        font-family: "Bebas Neue", cursive;
+        font-size: 1.6rem;
+        letter-spacing: 1px;
+        color: var(--white);
+        margin-bottom: 0.75rem;
+      }
+      .card-desc {
+        color: var(--gray);
+        font-size: 0.92rem;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+      }
+      .card-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        margin-bottom: 1rem;
+      }
+      .tag {
+        background: var(--orange-glow);
+        border: 1px solid rgba(255, 107, 0, 0.3);
+        color: var(--orange);
+        font-size: 0.72rem;
+        font-weight: 700;
+        padding: 3px 10px;
+        border-radius: 2px;
+        letter-spacing: 0.5px;
+        font-family: "Space Mono", monospace;
+      }
+      .card-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(255, 107, 0, 0.1);
+        font-size: 0.8rem;
+        color: var(--gray);
+      }
+      .card-meta i {
+        color: var(--orange);
+        margin-right: 5px;
+      }
+
+      /* ADD PROJECT BANNER */
+      .add-project-card {
+        background: var(--card-bg);
+        border: 1.5px dashed rgba(255, 107, 0, 0.3);
+        border-radius: 4px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        padding: 3rem;
+        cursor: pointer;
+        transition: all 0.3s;
+        min-height: 350px;
+      }
+      .add-project-card:hover {
+        border-color: var(--orange);
+        background: var(--dark2);
+      }
+      .add-project-card i {
+        font-size: 3rem;
+        color: var(--orange);
+        opacity: 0.5;
+      }
+      .add-project-card p {
+        color: var(--gray);
+        font-size: 0.85rem;
+        text-align: center;
+        font-family: "Space Mono", monospace;
+      }
+
+      /* HOW TO ADD - GUIDE */
+      .add-guide {
+        background: var(--dark2);
+        border: 1px solid rgba(255, 107, 0, 0.2);
+        border-radius: 4px;
+        padding: 2rem;
+        margin-top: 3rem;
+      }
+      .add-guide h4 {
+        font-family: "Bebas Neue", cursive;
+        font-size: 1.5rem;
+        color: var(--orange);
+        margin-bottom: 1rem;
+      }
+      .add-guide pre {
+        background: var(--dark3);
+        border: 1px solid rgba(255, 107, 0, 0.15);
+        border-radius: 3px;
+        padding: 1.5rem;
+        font-size: 0.8rem;
+        color: #aaa;
+        overflow-x: auto;
+        line-height: 1.7;
+        font-family: "Space Mono", monospace;
+      }
+      .add-guide .key {
+        color: var(--orange);
+      }
+      .add-guide .val {
+        color: #7ec8e3;
+      }
+      .add-guide .comment {
+        color: #666;
+      }
+
+      /* CONTACT */
+      #contact {
+        background: var(--dark);
+      }
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: start;
+      }
+      .contact-info {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+      .contact-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 1.2rem;
+        padding: 1.2rem;
+        background: var(--card-bg);
+        border: 1px solid rgba(255, 107, 0, 0.12);
+        border-radius: 3px;
+        transition: all 0.3s;
+      }
+      .contact-item:hover {
+        border-color: var(--orange);
+        transform: translateX(5px);
+      }
+      .contact-icon {
+        width: 46px;
+        height: 46px;
+        background: var(--orange-glow);
+        border: 1px solid var(--orange);
+        border-radius: 2px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--orange);
+        font-size: 1.2rem;
+        flex-shrink: 0;
+      }
+      .contact-label {
+        font-size: 0.72rem;
+        color: var(--gray);
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-family: "Space Mono", monospace;
+        margin-bottom: 0.2rem;
+      }
+      .contact-value {
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--white);
+      }
+      .contact-form-wrap {
+        background: var(--card-bg);
+        border: 1px solid rgba(255, 107, 0, 0.12);
+        border-radius: 4px;
+        padding: 2rem;
+      }
+      .contact-form-wrap h3 {
+        font-family: "Bebas Neue", cursive;
+        font-size: 1.8rem;
+        color: var(--white);
+        margin-bottom: 1.5rem;
+        letter-spacing: 1px;
+      }
+      .form-group {
+        margin-bottom: 1.2rem;
+      }
+      .form-group label {
+        display: block;
+        font-size: 0.78rem;
+        color: var(--gray);
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        margin-bottom: 0.5rem;
+        font-family: "Space Mono", monospace;
+      }
+      .form-control-custom {
+        width: 100%;
+        background: var(--dark2);
+        border: 1px solid rgba(255, 107, 0, 0.2);
+        border-radius: 2px;
+        padding: 12px 14px;
+        color: var(--white);
+        font-family: "Rajdhani", sans-serif;
+        font-size: 1rem;
+        outline: none;
+        transition: border 0.3s;
+      }
+      .form-control-custom:focus {
+        border-color: var(--orange);
+      }
+      .form-control-custom::placeholder {
+        color: #555;
+      }
+      textarea.form-control-custom {
+        resize: vertical;
+        min-height: 120px;
+      }
+      .whatsapp-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.7rem;
+        background: #25d366;
+        color: #fff;
+        padding: 14px;
+        border-radius: 2px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 1rem;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-top: 1rem;
+        transition: all 0.3s;
+      }
+      .whatsapp-btn:hover {
+        background: #1db954;
+        color: #fff;
+        transform: translateY(-2px);
+      }
+
+      /* FOOTER */
+      footer {
+        background: var(--black);
+        border-top: 1px solid rgba(255, 107, 0, 0.1);
+        padding: 2.5rem 5%;
+        text-align: center;
+      }
+      .footer-logo {
+        font-family: "Bebas Neue", cursive;
+        font-size: 2rem;
+        color: var(--orange);
+        letter-spacing: 3px;
+        margin-bottom: 0.5rem;
+      }
+      .footer-logo span {
+        color: var(--white);
+      }
+      footer p {
+        color: var(--gray);
+        font-size: 0.85rem;
+      }
+      .footer-socials {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin: 1.5rem 0;
+      }
+      .social-btn {
+        width: 40px;
+        height: 40px;
+        background: var(--dark2);
+        border: 1px solid rgba(255, 107, 0, 0.2);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--gray);
+        font-size: 1rem;
+        text-decoration: none;
+        transition: all 0.3s;
+      }
+      .social-btn:hover {
+        background: var(--orange);
+        color: #fff;
+        border-color: var(--orange);
+      }
+
+      /* SCROLL REVEAL */
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.7s ease;
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: none;
+      }
+
+      /* ANIMATIONS */
+      @keyframes fadeInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+      @keyframes fadeInRight {
+        from {
+          opacity: 0;
+          transform: translateX(40px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+
+      /* MOBILE NAV */
+      .mobile-menu {
+        display: none;
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: rgba(10, 10, 10, 0.97);
+        backdrop-filter: blur(20px);
+        padding: 2rem;
+        z-index: 999;
+        border-bottom: 1px solid rgba(255, 107, 0, 0.2);
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+      .mobile-menu.open {
+        display: flex;
+      }
+      .mobile-menu a {
+        color: var(--gray);
+        text-decoration: none;
+        font-size: 1.3rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        transition: color 0.3s;
+      }
+      .mobile-menu a:hover {
+        color: var(--orange);
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+        .hamburger {
+          display: block;
+        }
+        .hero-grid {
+          grid-template-columns: 1fr;
+        }
+        .hero-visual {
+          display: none;
+        }
+        .about-grid {
+          grid-template-columns: 1fr;
+        }
+        .about-img-wrap {
+          display: none;
+        }
+        .contact-grid {
+          grid-template-columns: 1fr;
+        }
+        .skills-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        section {
+          padding: 70px 5%;
+        }
+        body {
+          cursor: auto;
+        }
+        .cursor,
+        .cursor-follower {
+          display: none;
+        }
+      }
+
+      /* ORANGE SCROLLBAR */
+      ::-webkit-scrollbar {
+        width: 5px;
+      }
+      ::-webkit-scrollbar-track {
+        background: var(--black);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--orange);
+        border-radius: 5px;
+      }
+
+      /* NOISE TEXTURE OVERLAY */
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.025;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        pointer-events: none;
+        z-index: 9997;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- CURSOR -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-follower" id="cursorFollower"></div>
+
+    <!-- NAVBAR -->
+    <nav id="navbar">
+      <div class="nav-inner">
+        <a href="#hero" class="nav-logo">VISH<span>TECH SOLUTION</span></a>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="nav-right">
+          <button
+            class="theme-toggle"
+            id="themeToggle"
+            title="Toggle Dark/Light Mode"
+          >
+            <i class="fas fa-moon" id="themeIcon"></i>
+          </button>
+          <button class="hamburger" id="hamburger">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#about" onclick="closeMobile()">About</a>
+      <a href="#projects" onclick="closeMobile()">Projects</a>
+      <a href="#contact" onclick="closeMobile()">Contact</a>
+    </div>
+
+    <!-- HERO -->
+    <section id="hero">
+      <div class="floating-icons" id="floatingIcons"></div>
+      <div class="hero-grid">
+        <div class="hero-left">
+          <div class="hero-tag">⚡ Automating Small Businesses</div>
+          <h1 class="hero-name">
+            VISHWA<br /><span class="orange">PATEL</span>
+          </h1>
+          <p class="hero-typed">
+            <span id="typed-text"></span><span class="typed-cursor">|</span>
+          </p>
+          <p class="hero-desc">
+            I build smart systems for local businesses — automating daily
+            operations so owners can focus on growth. From attendance to
+            billing, I turn headaches into one-click solutions.
+          </p>
+          <div class="hero-btns">
+            <a href="#projects" class="btn-orange">View My Work</a>
+            <a href="#contact" class="btn-outline">Get In Touch</a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-box">
+            <div class="hero-box-inner">
+              <div class="hero-icon-big">
+                <i class="fas fa-microchip"></i>
+              </div>
+              <div class="hero-stats">
+                <div class="stat-box">
+                  <span class="stat-num" id="countProjects">0</span>
+                  <span class="stat-label">Projects</span>
+                </div>
+                <div class="stat-box">
+                  <span class="stat-num" id="countClients">0</span>
+                  <span class="stat-label">Clients</span>
+                </div>
+                <div class="stat-box">
+                  <span class="stat-num" id="countHours">0</span>
+                  <span class="stat-label">Hours Saved</span>
+                </div>
+                <div class="stat-box">
+                  <span class="stat-num">100%</span>
+                  <span class="stat-label">Satisfaction</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <span class="section-label">// Who I Am</span>
+      <h2 class="section-title">ABOUT <span class="orange">ME</span></h2>
+      <div class="section-line"></div>
+      <div class="about-grid reveal">
+        <div class="about-img-wrap">
+          <div class="about-img-box">
+            <i class="fas fa-user-tie"></i>
+          </div>
+          <div class="about-tag">📍 Vadodara, Gujarat</div>
+        </div>
+        <div>
+          <p class="about-text">
+            Hey! I'm <strong style="color: var(--orange)">Vishwa Patel</strong>,
+            founder of
+            <strong style="color: var(--orange)">VishTech Solution</strong> — a
+            tech service built for the real world of local business.
+          </p>
+          <p class="about-text">
+            Most small shops and stores struggle with daily operations —
+            tracking attendance, managing inventory, handling billing manually.
+            I step in and build simple, powerful systems that automate exactly
+            those pain points.
+          </p>
+          <p class="about-text">
+            No complex enterprise software. Just clean, reliable tools built
+            specifically for <em style="color: var(--white)">your</em> store,
+            your team, your workflow.
+          </p>
+          <div class="skills-grid">
+            <div class="skill-chip">⚙️ Automation</div>
+            <div class="skill-chip">📊 Attendance Sys</div>
+            <div class="skill-chip">🧾 Billing Tools</div>
+            <div class="skill-chip">📦 Inventory Mgmt</div>
+            <div class="skill-chip">🌐 Web Apps</div>
+            <div class="skill-chip">💬 Automation Bots</div>
+            <div class="skill-chip">🗄️ Database</div>
+            <div class="skill-chip">📱 Mobile-First</div>
+            <div class="skill-chip">☁️ Automate Tasks</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <span class="section-label">// My Work</span>
+      <h2 class="section-title">
+        COMPLETED <span class="orange">PROJECTS</span>
+      </h2>
+      <div class="section-line"></div>
+      <div class="projects-grid" id="projectsGrid"></div>
+
+      <!-- HOW TO ADD GUIDE -->
+      <!-- <div class="add-guide reveal" style="margin-top: 4rem">
+        <h4>📌 HOW TO ADD A NEW PROJECT</h4>
+        <p
+          style="
+            color: var(--gray);
+            font-size: 0.88rem;
+            margin-bottom: 1rem;
+            font-family: &quot;Space Mono&quot;, monospace;
+          "
+        >
+          Find the <code style="color: var(--orange)">projects</code> array in
+          the script and copy-paste this block:
+        </p>
+        <pre><span class="comment">// Copy this block and add to the projects array:</span>
+{
+  <span class="key">client</span>: <span class="val">"Client Name Here"</span>,
+  <span class="key">title</span>: <span class="val">"Project Name"</span>,
+  <span class="key">location</span>: <span class="val">"City, Branch"</span>,
+  <span class="key">desc</span>: <span class="val">"Short description of what you built."</span>,
+  <span class="key">status</span>: <span class="val">"Completed"</span>,   <span class="comment">// or "Ongoing"</span>
+  <span class="key">year</span>: <span class="val">"2026"</span>,
+  <span class="key">tags</span>: [<span class="val">"Tag1"</span>, <span class="val">"Tag2"</span>, <span class="val">"Tag3"</span>],
+  <span class="key">images</span>: [
+    <span class="comment">// Add image URLs or leave placeholder icons below</span>
+    { <span class="key">type</span>: <span class="val">"icon"</span>, <span class="key">icon</span>: <span class="val">"fas fa-your-icon"</span>, <span class="key">label</span>: <span class="val">"Screen 1"</span> },
+    <span class="comment">// OR use real image: { type: "img", src: "path/to/image.png", label: "Screenshot" }</span>
+  ]
+},</pre>
+      </div> -->
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <span class="section-label">// Let's Build</span>
+      <h2 class="section-title">GET IN <span class="orange">TOUCH</span></h2>
+      <div class="section-line"></div>
+      <div class="contact-grid reveal">
+        <div>
+          <p
+            style="
+              color: var(--gray);
+              font-size: 1.05rem;
+              line-height: 1.8;
+              margin-bottom: 2rem;
+            "
+          >
+            Got a small business that needs automation? Or just want to discuss
+            how we can make your daily operations smoother? Let's talk.
+          </p>
+          <div class="contact-info">
+            <div class="contact-item">
+              <div class="contact-icon"><i class="fas fa-phone"></i></div>
+              <div>
+                <div class="contact-label">Phone / WhatsApp</div>
+                <div class="contact-value">+91 8141154868</div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+              <div>
+                <div class="contact-label">Email</div>
+                <div class="contact-value">vishwapatel660@gmail.com</div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div>
+                <div class="contact-label">Location</div>
+                <div class="contact-value">Vadodara, Gujarat</div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon"><i class="fas fa-clock"></i></div>
+              <div>
+                <div class="contact-label">Response Time</div>
+                <div class="contact-value">Within a Day</div>
+              </div>
+            </div>
+          </div>
+          <a
+            href="https://wa.me/918141154868?text=Hi%20Vishwa!%20I%20want%20to%20discuss%20a%20project."
+            class="whatsapp-btn"
+            target="_blank"
+          >
+            <i class="fab fa-whatsapp" style="font-size: 1.3rem"></i>
+            Chat on WhatsApp
+          </a>
+        </div>
+        <div class="contact-form-wrap">
+          <h3>Send a Message</h3>
+          <div class="form-group">
+            <label>Your Name</label>
+            <input
+              type="text"
+              class="form-control-custom"
+              placeholder="Business Owner Name"
+            />
+          </div>
+          <div class="form-group">
+            <label>Business Name</label>
+            <input
+              type="text"
+              class="form-control-custom"
+              placeholder="Your Shop / Store Name"
+            />
+          </div>
+          <div class="form-group">
+            <label>What do you need?</label>
+            <textarea
+              class="form-control-custom"
+              placeholder="Describe your requirement briefly..."
+            ></textarea>
+          </div>
+          <button
+            class="btn-orange"
+            style="width: 100%; font-size: 1rem; letter-spacing: 2px"
+            onclick="sendEnquiry()"
+          >
+            <i class="fas fa-paper-plane" style="margin-right: 8px"></i>Send
+            Enquiry
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-logo">VISH<span>TECH</span> SOLUTION</div>
+      <div class="footer-socials">
+        <a
+          href="https://wa.me/918141154868?text=Hi%20Vishwa!%20I%20want%20to%20discuss%20a%20project."
+          class="social-btn"
+          ><i class="fab fa-whatsapp"></i
+        ></a>
+
+        <a href="Github_Maintain.html?type=instagram" class="social-btn"
+          ><i class="fab fa-instagram"></i
+        ></a>
+
+        <a href="https://www.linkedin.com/in/vishwa-gami/" class="social-btn"
+          ><i class="fab fa-linkedin"></i
+        ></a>
+
+        <a href="Github_Maintain.html?type=github" class="social-btn"
+          ><i class="fab fa-github"></i
+        ></a>
+      </div>
+      <p style="margin-bottom: 0.5rem">
+        Automating Small Businesses Across Gujarat
+      </p>
+      <p style="color: #444; font-size: 0.78rem">
+        © 2026 VishTech Solution · Designed & Built by Vishwa Patel
+      </p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // ============================================
+      // ✅ PROJECT DATA — ADD YOUR PROJECTS HERE
+      // ============================================
+      const projects = [
+        {
+          client: "Motabbhai Clothing",
+          title: "Attendance Management System",
+          location: "Vadodara Branch",
+          desc: "Built a complete digital attendance system replacing manual registers. Includes employee check-in/check-out, real-time reports, monthly summaries, and late/absent alerts for the owner.",
+          status: "Completed",
+          year: "2026",
+          tags: ["Attendance", "Automation", "Reports", "Web App"],
+          images: [
+            { type: "icon", icon: "fas fa-calendar-check", label: "Dashboard" },
+            { type: "icon", icon: "fas fa-users", label: "Employee Panel" },
+            { type: "icon", icon: "fas fa-chart-bar", label: "Reports" },
+            { type: "icon", icon: "fas fa-bell", label: "Alerts" },
+          ],
+        },
+        {
+          client: "Motabbhai Clothing",
+          title: "Attendance Management System",
+          location: "Vadodara Branch",
+          desc: "Built a complete digital attendance system replacing manual registers. Includes employee check-in/check-out, real-time reports, monthly summaries, and late/absent alerts for the owner.",
+          status: "Completed",
+          year: "2026",
+          tags: ["Attendance", "Automation", "Reports", "Web App"],
+          images: [
+            { type: "icon", icon: "fas fa-calendar-check", label: "Dashboard" },
+            { type: "icon", icon: "fas fa-users", label: "Employee Panel" },
+            { type: "icon", icon: "fas fa-chart-bar", label: "Reports" },
+            { type: "icon", icon: "fas fa-bell", label: "Alerts" },
+          ],
+        },
+        // ← ADD NEW PROJECTS BELOW THIS LINE
+      ];
+
+      // ============================================
+      // RENDER PROJECTS
+      // ============================================
+      function renderProjects() {
+        const grid = document.getElementById("projectsGrid");
+        grid.innerHTML = "";
+        projects.forEach((p, i) => {
+          grid.innerHTML += buildCard(p, i);
+        });
+        // Add new project card
+        //     grid.innerHTML += `
+        // <div class="add-project-card" onclick="showAddGuide()">
+        //   <i class="fas fa-plus-circle"></i>
+        //   <strong style="color:var(--white);font-family:'Bebas Neue',cursive;font-size:1.5rem;letter-spacing:1px">ADD NEW PROJECT</strong>
+        //   <p>Scroll down to see how easy it is to add your next client project</p>
+        // </div>`;
+        // Init sliders
+        projects.forEach((_, i) => initSlider(i));
+      }
+
+      function buildCard(p, i) {
+        const slides = p.images
+          .map((img, si) => {
+            if (img.type === "img") {
+              return `<div class="slide ${si === 0 ? "active" : ""}">
+        <img src="${img.src}" alt="${img.label}" class="slide-img">
+      </div>`;
+            } else {
+              return `<div class="slide ${si === 0 ? "active" : ""}">
+        <div class="slide-placeholder">
+          <i class="${img.icon}"></i>
+          <span>${img.label}</span>
+        </div>
+      </div>`;
+            }
+          })
+          .join("");
+
+        const dots = p.images
+          .map(
+            (_, si) =>
+              `<div class="dot ${si === 0 ? "active" : ""}" onclick="goSlide(${i},${si})"></div>`,
+          )
+          .join("");
+
+        const tags = p.tags
+          .map((t) => `<span class="tag">${t}</span>`)
+          .join("");
+        const statusColor = p.status === "Completed" ? "#22c55e" : "#f59e0b";
+
+        return `
+    <div class="project-card reveal">
+      <div class="card-slider" id="slider-${i}">
+        ${slides}
+        <div class="slider-dots">${dots}</div>
+        <div class="card-status" style="background:${statusColor}">${p.status}</div>
+      </div>
+      <div class="card-body-custom">
+        <div class="card-client">📍 ${p.client} · ${p.location}</div>
+        <div class="card-title-proj">${p.title}</div>
+        <p class="card-desc">${p.desc}</p>
+        <div class="card-tags">${tags}</div>
+        <div class="card-meta">
+          <span><i class="fas fa-calendar"></i>${p.year}</span>
+          <span><i class="fas fa-check-circle"></i>${p.status}</span>
+        </div>
+      </div>
+    </div>`;
+      }
+
+      // SLIDER LOGIC
+      const sliderIntervals = {};
+      function initSlider(i) {
+        const slides = document.querySelectorAll(`#slider-${i} .slide`);
+        const dots = document.querySelectorAll(`#slider-${i} .dot`);
+        if (slides.length <= 1) return;
+        let cur = 0;
+        sliderIntervals[i] = setInterval(() => {
+          slides[cur].classList.remove("active");
+          dots[cur].classList.remove("active");
+          cur = (cur + 1) % slides.length;
+          slides[cur].classList.add("active");
+          dots[cur].classList.add("active");
+        }, 2500);
+      }
+      function goSlide(cardIdx, slideIdx) {
+        clearInterval(sliderIntervals[cardIdx]);
+        const slides = document.querySelectorAll(`#slider-${cardIdx} .slide`);
+        const dots = document.querySelectorAll(`#slider-${cardIdx} .dot`);
+        slides.forEach((s) => s.classList.remove("active"));
+        dots.forEach((d) => d.classList.remove("active"));
+        slides[slideIdx].classList.add("active");
+        dots[slideIdx].classList.add("active");
+      }
+
+      // FLOATING ICONS
+      function buildFloatingIcons() {
+        const icons = [
+          "fa-code",
+          "fa-database",
+          "fa-microchip",
+          "fa-wifi",
+          "fa-robot",
+          "fa-terminal",
+          "fa-server",
+          "fa-cloud",
+          "fa-cog",
+          "fa-bolt",
+          "fa-chart-line",
+          "fa-mobile-alt",
+          "fa-qrcode",
+          "fa-lock",
+        ];
+        const wrap = document.getElementById("floatingIcons");
+        icons.forEach((ic, idx) => {
+          const el = document.createElement("div");
+          el.className = "float-icon";
+          el.innerHTML = `<i class="fas ${ic}"></i>`;
+          el.style.left = `${(idx / icons.length) * 100}%`;
+          el.style.animationDuration = `${8 + Math.random() * 10}s`;
+          el.style.animationDelay = `${Math.random() * 8}s`;
+          el.style.fontSize = `${1.2 + Math.random() * 1.5}rem`;
+          wrap.appendChild(el);
+        });
+      }
+
+      // TYPED TEXT
+      const phrases = [
+        "Business Automation Expert",
+        "System Developer",
+        "Small Business Tech Partner",
+        "VishTech Solution Founder",
+      ];
+      let pi = 0,
+        ci = 0,
+        deleting = false;
+      function typeLoop() {
+        const el = document.getElementById("typed-text");
+        const phrase = phrases[pi];
+        if (!deleting) {
+          el.textContent = phrase.slice(0, ci + 1);
+          ci++;
+          if (ci === phrase.length) {
+            deleting = true;
+            setTimeout(typeLoop, 2000);
+            return;
+          }
+        } else {
+          el.textContent = phrase.slice(0, ci - 1);
+          ci--;
+          if (ci === 0) {
+            deleting = false;
+            pi = (pi + 1) % phrases.length;
+          }
+        }
+        setTimeout(typeLoop, deleting ? 50 : 90);
+      }
+
+      // COUNT UP ANIMATION
+      function countUp(el, target, suffix = "") {
+        let count = 0;
+        const step = Math.ceil(target / 40);
+        const interval = setInterval(() => {
+          count = Math.min(count + step, target);
+          el.textContent = count + suffix;
+          if (count >= target) clearInterval(interval);
+        }, 40);
+      }
+
+      // DARK/LIGHT THEME
+      const toggleBtn = document.getElementById("themeToggle");
+      const themeIcon = document.getElementById("themeIcon");
+      let isDark = false;
+      toggleBtn.addEventListener("click", () => {
+        isDark = !isDark;
+        document.documentElement.setAttribute(
+          "data-theme",
+          isDark ? "dark" : "light",
+        );
+        themeIcon.className = isDark ? "fas fa-sun" : "fas fa-moon";
+      });
+
+      // SCROLL REVEAL
+      function checkReveal() {
+        document.querySelectorAll(".reveal").forEach((el) => {
+          if (el.getBoundingClientRect().top < window.innerHeight - 80) {
+            el.classList.add("visible");
+          }
+        });
+      }
+
+      // CURSOR
+      const cursor = document.getElementById("cursor");
+      const follower = document.getElementById("cursorFollower");
+      document.addEventListener("mousemove", (e) => {
+        cursor.style.left = e.clientX + "px";
+        cursor.style.top = e.clientY + "px";
+        setTimeout(() => {
+          follower.style.left = e.clientX + "px";
+          follower.style.top = e.clientY + "px";
+        }, 80);
+      });
+
+      // HAMBURGER
+      document.getElementById("hamburger").addEventListener("click", () => {
+        document.getElementById("mobileMenu").classList.toggle("open");
+      });
+      function closeMobile() {
+        document.getElementById("mobileMenu").classList.remove("open");
+      }
+
+      // ENQUIRY
+      function sendEnquiry() {
+        const name = document
+          .querySelectorAll(".form-control-custom")[0]
+          .value.trim();
+        const business = document
+          .querySelectorAll(".form-control-custom")[1]
+          .value.trim();
+        const message = document
+          .querySelectorAll(".form-control-custom")[2]
+          .value.trim();
+
+        if (!name || !business || !message) {
+          alert("⚠️ Please fill all fields first!");
+          return;
+        }
+
+        const text = `🙏 *New Enquiry — VishTech Solution*\n\n👤 *Name:* ${name}\n🏪 *Business:* ${business}\n💬 *Requirement:* ${message}`;
+        const url = `https://wa.me/918141154868?text=${encodeURIComponent(text)}`;
+        window.open(url, "_blank");
+      }
+      function showAddGuide() {
+        document
+          .querySelector(".add-guide")
+          .scrollIntoView({ behavior: "smooth" });
+      }
+
+      // INIT
+      window.addEventListener("scroll", checkReveal);
+      window.addEventListener("load", () => {
+        buildFloatingIcons();
+        renderProjects();
+        typeLoop();
+        checkReveal();
+        setTimeout(() => {
+          countUp(document.getElementById("countProjects"), projects.length);
+          countUp(document.getElementById("countClients"), projects.length);
+          countUp(document.getElementById("countHours"), projects.length * 20);
+        }, 800);
+      });
+    </script>
+  </body>
+</html>

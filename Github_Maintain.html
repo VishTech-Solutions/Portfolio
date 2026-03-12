@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Maintenance | VishTech Solution</title>
+    <style>
+      body {
+        background: #121212;
+        color: white;
+        font-family: "Poppins", sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+      .container {
+        text-align: center;
+        border: 1px solid #333;
+        padding: 40px;
+        border-radius: 20px;
+        max-width: 400px;
+      }
+      h1 {
+        color: #f39c12;
+        margin-bottom: 10px;
+      }
+      p {
+        opacity: 0.8;
+      }
+      .back-btn {
+        color: #007bff;
+        text-decoration: none;
+        margin-top: 25px;
+        display: inline-block;
+        font-weight: bold;
+      }
+      .icon-box {
+        font-size: 50px;
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="icon-box" id="icon">⚠️</div>
+      <h1 id="title">Under Maintenance</h1>
+      <p id="message">We are working on something great!</p>
+      <a href="index.html" class="back-btn">← Back to Portfolio</a>
+    </div>
+
+    <script>
+      // URL se 'type' nikalne ka logic
+      const urlParams = new URLSearchParams(window.location.search);
+      const type = urlParams.get("type");
+
+      const title = document.getElementById("title");
+      const message = document.getElementById("message");
+
+      if (type === "github") {
+        title.innerText = "GitHub Maintenance";
+        message.innerText =
+          "Vishwa is pushing some heavy code updates. Our GitHub repo is temporarily offline.";
+      } else if (type === "instagram") {
+        title.innerText = "Instagram Offline";
+        message.innerText =
+          "We are updating our social media presence. Follow us back in a few days!";
+      }
+    </script>
+  </body>
+</html>
