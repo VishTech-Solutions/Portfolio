@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>VishTech Solution — Automate Your Business</title>
+    <title>VishTech Solutions — Automate Your Business</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -35,7 +35,7 @@
         --dark2: #dddddd;
         --dark3: #cccccc;
         --white: #111111;
-        --gray: #555555;
+        --gray: #1c1b1b;
         --card-bg: #ffffff;
       }
 
@@ -87,7 +87,7 @@
         width: 100%;
         z-index: 1000;
         padding: 18px 0;
-        background: rgba(10, 10, 10, 0.85);
+        background: rgba(62, 62, 62, 0.85);
         backdrop-filter: blur(20px);
         border-bottom: 1px solid rgba(255, 107, 0, 0.15);
         transition: all 0.3s;
@@ -480,9 +480,9 @@
       .about-img-wrap {
         position: relative;
       }
-      .about-img-box {
+      .about-img-box img {
         width: 100%;
-        aspect-ratio: 0.85;
+        aspect-ratio: 0.99;
         background: var(--dark2);
         border: 1px solid rgba(255, 107, 0, 0.2);
         border-radius: 4px;
@@ -1080,6 +1080,54 @@
         pointer-events: none;
         z-index: 9997;
       }
+      /* LIGHTBOX GALLERY */
+
+      .lightbox {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.95);
+        z-index: 9999;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .lightbox-img {
+        max-width: 90%;
+        max-height: 90%;
+        object-fit: contain;
+      }
+
+      .lightbox-close {
+        position: absolute;
+        top: 20px;
+        right: 40px;
+        font-size: 40px;
+        color: rgb(229, 82, 82);
+        cursor: pointer;
+      }
+
+      .lightbox-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 50px;
+        color: rgb(238, 84, 84);
+        cursor: pointer;
+        padding: 20px;
+        user-select: none;
+      }
+
+      .lightbox-nav.left {
+        left: 10px;
+      }
+
+      .lightbox-nav.right {
+        right: 10px;
+      }
     </style>
   </head>
   <body>
@@ -1090,7 +1138,7 @@
     <!-- NAVBAR -->
     <nav id="navbar">
       <div class="nav-inner">
-        <a href="#hero" class="nav-logo">VISH<span>TECH SOLUTION</span></a>
+        <a href="#hero" class="nav-logo">VISH<span>TECH SOLUTIONS</span></a>
         <ul class="nav-links">
           <li><a href="#about">About</a></li>
           <li><a href="#projects">Projects</a></li>
@@ -1125,7 +1173,7 @@
         <div class="hero-left">
           <div class="hero-tag">⚡ Automating Small Businesses</div>
           <h1 class="hero-name">
-            VISHWA<br /><span class="orange">PATEL</span>
+            JANKI<br /><span class="orange">PATEL</span>
           </h1>
           <p class="hero-typed">
             <span id="typed-text"></span><span class="typed-cursor">|</span>
@@ -1177,16 +1225,19 @@
       <div class="section-line"></div>
       <div class="about-grid reveal">
         <div class="about-img-wrap">
-          <div class="about-img-box">
+          <!-- <div class="about-img-box">
             <i class="fas fa-user-tie"></i>
+          </div> -->
+          <div class="about-img-box">
+            <img src="Images/Logo.png" alt="Logo" />
           </div>
-          <div class="about-tag">📍 Vadodara, Gujarat</div>
+          <div class="about-tag">📍 Gujarat, India</div>
         </div>
         <div>
           <p class="about-text">
-            Hey! I'm <strong style="color: var(--orange)">Vishwa Patel</strong>,
+            Hey! I'm <strong style="color: var(--orange)">Janki Patel</strong>,
             founder of
-            <strong style="color: var(--orange)">VishTech Solution</strong> — a
+            <strong style="color: var(--orange)">VishTech Solutions</strong> — a
             tech service built for the real world of local business.
           </p>
           <p class="about-text">
@@ -1202,7 +1253,7 @@
           </p>
           <div class="skills-grid">
             <div class="skill-chip">⚙️ Automation</div>
-            <div class="skill-chip">📊 Attendance Sys</div>
+            <div class="skill-chip">📊 Attendance System</div>
             <div class="skill-chip">🧾 Billing Tools</div>
             <div class="skill-chip">📦 Inventory Mgmt</div>
             <div class="skill-chip">🌐 Web Apps</div>
@@ -1295,7 +1346,7 @@
               </div>
               <div>
                 <div class="contact-label">Location</div>
-                <div class="contact-value">Vadodara, Gujarat</div>
+                <div class="contact-value">Gujarat, India</div>
               </div>
             </div>
             <div class="contact-item">
@@ -1307,7 +1358,7 @@
             </div>
           </div>
           <a
-            href="https://wa.me/918141154868?text=Hi%20Vishwa!%20I%20want%20to%20discuss%20a%20project."
+            href="https://wa.me/918141154868?text=Hi%20Janki!%20I%20want%20to%20discuss%20a%20project."
             class="whatsapp-btn"
             target="_blank"
           >
@@ -1354,23 +1405,33 @@
 
     <!-- FOOTER -->
     <footer>
-      <div class="footer-logo">VISH<span>TECH</span> SOLUTION</div>
+      <div class="footer-logo">VISH<span>TECH</span> SOLUTIONS</div>
       <div class="footer-socials">
         <a
-          href="https://wa.me/918141154868?text=Hi%20Vishwa!%20I%20want%20to%20discuss%20a%20project."
+          href="https://wa.me/918141154868?text=Hi%20Janki!%20I%20want%20to%20discuss%20a%20project."
           class="social-btn"
+          target="_blank"
           ><i class="fab fa-whatsapp"></i
         ></a>
 
-        <a href="Github_Maintain.html?type=instagram" class="social-btn"
+        <a
+          href="Github_Maintain.html?type=instagram"
+          class="social-btn"
+          target="_blank"
           ><i class="fab fa-instagram"></i
         ></a>
 
-        <a href="https://www.linkedin.com/in/vishtech-automation-solution/" class="social-btn"
+        <a
+          href="https://www.linkedin.com/in/vishtech-automation-solution/"
+          class="social-btn"
+          target="_blank"
           ><i class="fab fa-linkedin"></i
         ></a>
 
-        <a href="Github_Maintain.html?type=github" class="social-btn"
+        <a
+          href="Github_Maintain.html?type=github"
+          class="social-btn"
+          target="_blank"
           ><i class="fab fa-github"></i
         ></a>
       </div>
@@ -1378,9 +1439,20 @@
         Automating Small Businesses Across Gujarat
       </p>
       <p style="color: #444; font-size: 0.78rem">
-        © 2026 VishTech Solution · Designed & Built by Vishwa Patel
+        © 2026 VishTech Solutions · Designed & Built by Vishwa Patel
       </p>
     </footer>
+
+    <!-- Lighter BOX -->
+
+    <div id="lightbox" class="lightbox">
+      <span class="lightbox-close">&times;</span>
+
+      <img id="lightbox-img" class="lightbox-img" />
+
+      <div class="lightbox-nav left">&#10094;</div>
+      <div class="lightbox-nav right">&#10095;</div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
@@ -1397,13 +1469,13 @@
           year: "2026",
           tags: ["Attendance", "Automation", "Reports", "Web App"],
           images: [
-            { type: "icon", icon: "fas fa-calendar-check", label: "Dashboard" },
-            { type: "icon", icon: "fas fa-users", label: "Employee Panel" },
-            { type: "icon", icon: "fas fa-chart-bar", label: "Reports" },
-            { type: "icon", icon: "fas fa-bell", label: "Alerts" },
+            { type: "img", src: "Images/MB_logo.png", label: "MB_LOGO" },
+            { type: "img", src: "Images/UI.png", label: "UI" },
+            { type: "img", src: "Images/sheet_img.png", label: "Data" },
+            { type: "img", src: "Images/PDF_report.png", label: "Report" },
           ],
         },
-        
+
         // ← ADD NEW PROJECTS BELOW THIS LINE
       ];
 
@@ -1538,7 +1610,7 @@
         "Business Automation Expert",
         "System Developer",
         "Small Business Tech Partner",
-        "VishTech Solution Founder",
+        "VishTech Solutions Founder",
       ];
       let pi = 0,
         ci = 0,
@@ -1635,7 +1707,7 @@
           return;
         }
 
-        const text = `🙏 *New Enquiry — VishTech Solution*\n\n👤 *Name:* ${name}\n🏪 *Business:* ${business}\n💬 *Requirement:* ${message}`;
+        const text = `🙏 *New Enquiry — VishTech Solutions*\n\n👤 *Name:* ${name}\n🏪 *Business:* ${business}\n💬 *Requirement:* ${message}`;
         const url = `https://wa.me/918141154868?text=${encodeURIComponent(text)}`;
         window.open(url, "_blank");
       }
@@ -1657,6 +1729,73 @@
           countUp(document.getElementById("countClients"), projects.length);
           countUp(document.getElementById("countHours"), projects.length * 20);
         }, 800);
+      });
+
+      // LIGHTBOX IMAGE VIEW
+      // LIGHTBOX GALLERY
+
+      let currentImages = [];
+      let currentIndex = 0;
+
+      document.addEventListener("click", function (e) {
+        if (e.target.classList.contains("slide-img")) {
+          const slider = e.target.closest(".card-slider");
+
+          const imgs = slider.querySelectorAll(".slide-img");
+
+          currentImages = [];
+
+          imgs.forEach((img) => {
+            currentImages.push(img.src);
+          });
+
+          currentIndex = [...imgs].indexOf(e.target);
+
+          openLightbox();
+        }
+      });
+
+      function openLightbox() {
+        const box = document.getElementById("lightbox");
+        const img = document.getElementById("lightbox-img");
+
+        img.src = currentImages[currentIndex];
+
+        box.style.display = "flex";
+        // 👇 ADD THIS
+        cursor.style.display = "none";
+        follower.style.display = "none";
+      }
+
+      function nextImage() {
+        currentIndex = (currentIndex + 1) % currentImages.length;
+
+        document.getElementById("lightbox-img").src =
+          currentImages[currentIndex];
+      }
+
+      function prevImage() {
+        currentIndex =
+          (currentIndex - 1 + currentImages.length) % currentImages.length;
+
+        document.getElementById("lightbox-img").src =
+          currentImages[currentIndex];
+      }
+
+      document.querySelector(".lightbox-nav.right").onclick = nextImage;
+
+      document.querySelector(".lightbox-nav.left").onclick = prevImage;
+
+      document.querySelector(".lightbox-close").onclick = () => {
+        document.getElementById("lightbox").style.display = "none";
+      };
+
+      // keyboard arrows
+
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "ArrowRight") nextImage();
+
+        if (e.key === "ArrowLeft") prevImage();
       });
     </script>
   </body>
